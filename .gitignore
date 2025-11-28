@@ -1,0 +1,69 @@
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Vector store files
+dataflow_vector_store/
+index.faiss
+index.pkl
+*.faiss
+*.pkl
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# VS Code settings
+.vscode/
+
+# PyCharm settings
+.idea/
+
+# VS-specific files
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Python environment
+*.env
+
+# Mac system files
+.DS_Store
+
+# SQLite DBs or temp files
+*.db
+*.db-shm
+*.db-wal
+
+# Project-specific IDE metadata
+*.iml
+
+# Logs
+*.log
+
+# Ignore compiled python files
+*.pyo
+*.pyd
+
+# Coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+coverage.xml
+.cache
+nosetests.xml
+pytest_cache/
+.env
+.env.sample
