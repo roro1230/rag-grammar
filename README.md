@@ -24,6 +24,6 @@ OPENAI_API_KEY=your_openai_api_key_here
 
 ---
 
-1. Run the Streamlit application
+4. Run the Streamlit application
 
 streamlit run app.py
