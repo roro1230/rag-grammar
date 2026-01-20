@@ -3,9 +3,7 @@
 1. Create and activate virtual environment (recommended)
 
 python -m venv .venv
-
-.venv/Scripts/activate (Windows)
-
+.venv\Scripts\activate (Windows)
 source .venv/bin/activate (Mac/Linux)
 
 ---
@@ -26,16 +24,6 @@ OPENAI_API_KEY=your_openai_api_key_here
 
 ---
 
-4. Build the vector index (run once)
-
-This step processes the grammar documents and builds a FAISS index.
-
-python build_index.py
-
-After running this step, a vector index folder will be created.
-
----
-
-5. Run the Streamlit application
+1. Run the Streamlit application
 
 streamlit run app.py
