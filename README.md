@@ -1,59 +1,39 @@
-1) Tạo file `.env`
-- Tạo file `.env` ở thư mục gốc của project và thêm biến môi trường OpenAI API key:
+## SETUP & RUN INSTRUCTIONS
 
-	OPENAI_API_KEY=your_key_here
+1. Create and activate virtual environment (recommended)
 
-	Lưu ý: thay `your_key_here` bằng khóa thực tế của bạn.
+python -m venv .venv
+.venv/Scripts/activate (Windows)
+source .venv/bin/activate (Mac/Linux)
 
-2) Tạo và kích hoạt virtual environment
-- Tạo virtualenv (ví dụ dùng tên `.venv`):
+---
 
-	python3 -m venv .venv
+2. Install dependencies
 
-- Kích hoạt môi trường ảo:
+pip install -r requirements.txt
 
-	source .venv/bin/activate
+---
 
-- Cập nhật pip:
+3. Create environment variables
 
-	pip install --upgrade pip
+Create a file named `.env` in the project root directory.
 
-4) Cài đặt dependencies từ `requirements.txt`
-- Cài đặt tất cả package được liệt kê:
+Example `.env` content:
 
-	pip install -r requirements.txt
+OPENAI_API_KEY=your_openai_api_key_here
 
-5) Cài đặt Streamlit
-- Cài đặt Streamlit nếu chưa có:
+---
 
-	pip install streamlit
+4. Build the vector index (run once)
 
-6) Chạy `RAG.ipynb` để tạo file `INTENSIVE_GRAMMAR_chunks.jsonl`
-- Mở notebook `RAG.ipynb` bằng VS Code (Jupyter) hoặc Jupyter Lab/Notebook.
-- CHÚ Ý: chọn kernel trỏ tới `.venv` để các package đã cài được sử dụng trong notebook.
-- Chạy lần lượt các cell theo thứ tự:
-	- Cell tải PDF và làm sạch nội dung
-	- Cell chunking (tạo `chunks`)
-	- Cell tạo embeddings và lưu FAISS index
+This step processes the grammar documents and builds a FAISS index.
 
-- Sau khi chạy xong cell chunking, file `INTENSIVE_GRAMMAR_chunks.jsonl` sẽ được lưu trong thư mục dự án.
+python build_index.py
 
-7) Chạy ứng dụng Streamlit (`app.py`)
-- Sau khi đã có index/chunks, chạy ứng dụng:
+After running this step, a vector index folder will be created.
 
-	streamlit run app.py
+---
 
-- Mở trình duyệt theo địa chỉ mà Streamlit in ra.
+5. Run the Streamlit application
 
-Ghi chú và mẹo
-- Đảm bảo kernel Jupyter sử dụng đúng Python interpreter trong `.venv`. Nếu chưa có kernel, cài ipykernel và đăng ký:
-
-	pip install ipykernel
-	python -m ipykernel install --user --name=rag-grammar-venv --display-name "rag-grammar (.venv)"
-
-
-
-- Nếu bạn gặp lỗi liên quan tới OpenAI key khi chạy cell RAG, kiểm tra lại rằng `.env` đã được load (cell đầu notebook thường gọi `load_dotenv()`).
-
-
-
+streamlit run app.py
