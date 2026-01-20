@@ -8,6 +8,8 @@ import streamlit as st
 from dotenv import load_dotenv
 import os
 import json
+import sys
+import subprocess
 from pathlib import Path
 
 # Load environment variables
@@ -17,6 +19,17 @@ openai_api_key = os.getenv("OPENAI_API_KEY")
 if not openai_api_key:
     st.error("⚠️ OPENAI_API_KEY not found in environment. Please add it to .env file.")
     st.stop()
+
+vector_store_path = Path("INTENSIVE_GRAMMAR_faiss_index")
+chunks_file = Path("INTENSIVE_GRAMMAR_chunks.jsonl")
+
+if not vector_store_path.exists() or not chunks_file.exists():
+    subprocess.run([sys.executable, "build_index.py"], check=True)
+
+if not vector_store_path.exists() or not chunks_file.exists():
+    st.error("❌ Failed to build vector store.")
+    st.stop()
+
 
 # ============================================================================
 # PAGE CONFIG
@@ -72,13 +85,15 @@ with st.sidebar:
 st.markdown("# 📚 Giáo viên Ngữ pháp - Hệ thống Q&A")
 st.markdown("---")
 
-# Check if necessary files exist
-vector_store_path = Path("INTENSIVE_GRAMMAR_faiss_index")
-chunks_file = Path("INTENSIVE_GRAMMAR_chunks.jsonl")
+
+
 
 if not vector_store_path.exists():
     st.error("❌ Vector store không tìm thấy. Vui lòng chạy notebook để tạo FAISS index.")
     st.stop()
+
+
+
 
 if not chunks_file.exists():
     st.error("❌ Chunks file không tìm thấy. Vui lòng chạy notebook trước.")
