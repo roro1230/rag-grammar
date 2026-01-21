@@ -27,3 +27,7 @@ OPENAI_API_KEY=your_openai_api_key_here
 4. Run the Streamlit application
 
 streamlit run app.py
+
+![Demo UI](assets/demo1.jpg)
+
+![Demo UI](assets/demo2.jpg)
