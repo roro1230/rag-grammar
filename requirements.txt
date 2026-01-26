@@ -1,19 +1,19 @@
-langflow==1.2.0
-langchain==0.3.10
+langflow==1.6.4
+langchain==0.3.23
 openai==1.68.2
 jupyter==1.1.1
 python-dotenv==1.0.1
 ipykernel==6.29.5
 
 langchain-core>=0.3.0,<0.4.0
-langchain-community>=0.3.0,<0.4.0
+langchain-community>=0.3.21,<1.0.0
 sentence-transformers==4.1.0
-huggingface-hub==0.32.4
-langchain-huggingface==0.1.2
+huggingface-hub==0.33.4
+langchain-huggingface==0.3.1
 
-langchain-openai>=0.2.0,<0.3.0
+langchain-openai==0.3.11,<0.4.0
 
-langchain-anthropic==0.3.0
+langchain-anthropic==0.3.14
 anthropic>=0.34.0
 
 langchain-google-genai>=2.0.0,<3.0.0
@@ -31,3 +31,6 @@ requests>=2.31.0
 rich>=13.7.0
 pandas>=2.0.0
 numpy>=1.24.0
+streamlit>=1.28.0
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0

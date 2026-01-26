@@ -10,7 +10,7 @@ from langchain.vectorstores import FAISS
 
 load_dotenv()
 
-PDF_PATH = "INTENSIVE GRAMMAR.pdf"
+PDF_PATH = "INTENSIVE_GRAMMAR.pdf"
 INDEX_DIR = "INTENSIVE_GRAMMAR_faiss_index"
 CHUNKS_FILE = "INTENSIVE_GRAMMAR_chunks.jsonl"
 

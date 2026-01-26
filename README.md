@@ -1,32 +1,68 @@
 ## SETUP & RUN INSTRUCTIONS
 
+### Option 1: Run with Docker (Recommended - One Command)
+
+1. **Create environment file**
+   ```bash
+   # Create .env file with your OpenAI API key
+   echo "OPENAI_API_KEY=your_openai_api_key_here" > .env
+   ```
+
+2. **Run with Docker Compose**
+   ```bash
+   docker-compose up --build
+   ```
+
+   The application will be available at:
+   - **Streamlit UI**: http://localhost:8501
+   - **FastAPI Docs**: http://localhost:8000/docs
+
+### Option 2: Run Locally (Development)
+
 1. Create and activate virtual environment (recommended)
 
-python -m venv .venv
-.venv\Scripts\activate (Windows)
-source .venv/bin/activate (Mac/Linux)
-
----
+   ```bash
+   python -m venv .venv
+   .venv/Scripts/activate  # Windows
+   source .venv/bin/activate  # Mac/Linux
+   ```
 
 2. Install dependencies
 
-pip install -r requirements.txt
-
----
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 3. Create environment variables
 
-Create a file named `.env` in the project root directory.
+   Create a file named `.env` in the project root directory.
 
-Example `.env` content:
+   Example `.env` content:
+   ```
+   OPENAI_API_KEY=your_openai_api_key_here
+   ```
 
-OPENAI_API_KEY=your_openai_api_key_here
+4. Build the vector index (if not already built)
 
----
+   ```bash
+   python build_index.py
+   ```
 
-4. Run the Streamlit application
+5. Start the FastAPI server
 
-streamlit run app.py
+   ```bash
+   python run_api.py
+   ```
+
+   The API will be available at: http://localhost:8000
+
+   API Documentation: http://localhost:8000/docs
+
+6. Run the Streamlit client (in a separate terminal)
+
+   ```bash
+   streamlit run app.py
+   ```
 
 ![Demo UI](assets/demo1.jpg)
 
