@@ -1,0 +1,43 @@
+name: Docker Compose CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Create dummy env file
+        run: |
+          echo "OPENAI_API_KEY=dummy_key" > .env
+
+      - name: Build Docker images
+        run: docker compose build
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run tests
+        run: pytest tests/
+
+      - name: Start services
+        run: docker compose up -d
+
+      - name: Wait for API healthcheck
+        run: |
+          for i in {1..10}; do
+            curl http://localhost:8000/health && exit 0
+            sleep 5
+          done
+          exit 1
+
+      - name: Check Streamlit container is running
+        run: docker compose ps
+
+      - name: Shutdown
+        run: docker compose down
