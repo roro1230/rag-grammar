@@ -13,6 +13,8 @@
    docker-compose up --build
    ```
 
+   **Note:** The first build may take several minutes as Docker needs to download base images and install dependencies.
+
    The application will be available at:
    - **Streamlit UI**: http://localhost:8501
    - **FastAPI Docs**: http://localhost:8000/docs
