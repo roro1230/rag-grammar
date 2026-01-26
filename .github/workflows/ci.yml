@@ -19,8 +19,15 @@ jobs:
       - name: Build Docker images
         run: docker compose build
 
+      - name: Free disk space
+        run: |
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /usr/local/lib/android
+          sudo rm -rf /opt/ghc
+          sudo apt-get clean
+
       - name: Install Python dependencies
-        run: pip install -r requirements.txt
+        run: pip install --no-cache-dir -r requirements.txt
 
       - name: Run tests
         run: pytest tests/
