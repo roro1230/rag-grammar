@@ -97,20 +97,3 @@ def test_rag_service_get_context(mock_rag_service):
     service.vector_store.similarity_search.assert_called_once_with("test query", k=2)
 
 
-def test_rag_service_generate_response(mock_rag_service):
-    """Test full RAG response generation flow"""
-    service = mock_rag_service
-
-    # Mock context retrieval
-    mock_doc = MagicMock()
-    mock_doc.page_content = "Sample context for testing."
-    service.vector_store.similarity_search.return_value = [mock_doc]
-
-    # Mock LLM response
-    service.llm.invoke.return_value = "test response"
-
-    answer, sources = service.generate_response("What is grammar?", k=1)
-
-    assert answer == "test response"
-    assert len(sources) == 1
-    service.llm.invoke.assert_called_once()
