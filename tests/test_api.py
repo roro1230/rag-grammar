@@ -107,12 +107,10 @@ def test_rag_service_generate_response(mock_rag_service):
     service.vector_store.similarity_search.return_value = [mock_doc]
 
     # Mock LLM response
-    mock_response = MagicMock()
-    mock_response.content = "This is a mocked response from the LLM."
-    service.llm.invoke.return_value = mock_response
+    service.llm.invoke.return_value = "test response"
 
     answer, sources = service.generate_response("What is grammar?", k=1)
 
-    assert answer == "This is a mocked response from the LLM."
+    assert answer == "test response"
     assert len(sources) == 1
     service.llm.invoke.assert_called_once()
