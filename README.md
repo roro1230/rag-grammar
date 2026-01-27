@@ -92,6 +92,11 @@ This project implements a Retrieval-Augmented Generation (RAG) system that provi
    streamlit run app.py
    ```
 
+## Demo
+https://github.com/user-attachments/assets/d6775db0-0850-45c9-b4bb-8d4910cdcdf1
+
+
+
 ![Demo UI](assets/demo1.jpg)
 
 ![Demo UI](assets/demo2.jpg)
